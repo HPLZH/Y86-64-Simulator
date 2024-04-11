@@ -59,7 +59,8 @@ under certain conditions; type `c' for details.\n\
 	while (true)
 	{
 		fprintf(stderr, "\ndebug: ");
-		_ = scanf("%[^\n]%*c", buf);
+		fgets(buf, sizeof(buf), stdin);
+		opName[0] = 0;
 		_ = sscanf(buf, "%s", opName);
 		if (strcmp(opName, "s") == 0) {
 			display();
@@ -144,7 +145,7 @@ under certain conditions; type `c' for details.\n\
 			uint64_t addr = 0;
 			_ = sscanf(buf, "%*s %llX", &addr);
 			if (_ < 1) {
-				fprintf(stderr, "Usage: c address\n");
+				fprintf(stderr, "Usage: a address\n");
 				continue;
 			}
 			decodeCommand(addr);
